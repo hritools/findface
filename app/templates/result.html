@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div>
+        <img id="img-src" src="{{ image.url }}" style="display: none;">
+        <canvas id="img-canvas" width="{{ image.width }}" height="{{ image.height }}" style="border:3px solid black;"></canvas>
+    </div>
+    <div>
+        <p>{{ image.person_name }}</p>
+    </div>
+    <div>
+        <a href="/">Back</a>
+    </div>
+
+<script>
+    window.onload = function () {
+        var c = document.getElementById("img-canvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("img-src");
+        ctx.drawImage(img, 
+            {{ image.face_x }}, 
+            {{ image.face_y }}, 
+            {{ image.face_width }}, 
+            {{ image.face_height }}, 
+            0, 
+            0, 
+            {{ image.width }}, 
+            {{ image.height }});
+    }
+</script>
+{% endblock %}
+
+</html>

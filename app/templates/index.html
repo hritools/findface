@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block script %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div>
+    <form enctype="multipart/form-data" method="post" action="">
+        {% csrf_token %}
+        <div><input id="id_img" name="img" type="file" accept="image/*" required /></div>
+        <div><button type="submit">Send</button></div>
+    </form>
+</div>
+
+<div><a href="#" id="a-take-photo">Take a photo</a></div>
+<div id="video-area" style="display: none;">
+    <div><video id="player" autoplay></video></div>
+    <div><button id="btn-capture">Take a photo</button></div>
+    <div><canvas id="img-canvas" width=320 height=240></canvas></div>
+
+    <form id="form-base64" enctype="multipart/form-data" method="post" action="/base64/" style="display: none;">
+        {% csrf_token %}
+        <div style="display: none;"><input id="img-base64" name="imgBase64" type="text" /></div>
+        <div><button type="submit">Send</button></div>
+    </form>
+</div>
+{% endblock %}

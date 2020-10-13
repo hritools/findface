@@ -1,0 +1,5 @@
+--extra-index-url https://unihost-dg03.uni.innopolis.ru/nexus/repository/Python-repo/simple
+
+Django==1.11.20
+Pillow==5.4.1
+facer==0.0.1
